@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anonymous Theater</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .animated-bg {
+            background: linear-gradient(
+                45deg, 
+                #1a1a1a,
+                #2d2d2d,
+                #1f1f1f,
+                #2a2a2a,
+                #1a1a1a
+            );
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            position: fixed;
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .mask {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .telegram-button {
+            background-color: #0088cc;
+            transition: all 0.3s ease;
+        }
+
+        .telegram-button:hover {
+            background-color: #0099dd;
+            transform: scale(1.05);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .mask img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .content-wrapper {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg">
+        <!-- Затемняющий оверлей -->
+        <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-50"></div>
+
+        <!-- Основной контент -->
+        <div class="relative container mx-auto content-wrapper">
+            <div class="flex flex-col items-center justify-center py-8 min-h-screen">
+                <div class="mask mb-6 md:mb-8">
+                    <img src="https://i.imgur.com/NFAgVU9.png" alt="Anonymous Mask" class="w-32 h-32 md:w-48 md:h-48 object-contain"/>
+                </div>
+
+                <h1 class="text-4xl md:text-6xl font-bold mb-6 md:mb-8 text-white text-center">
+                    Estodo Chat
+                </h1>
+
+                <p class="text-lg md:text-2xl mb-8 md:mb-12 text-white text-center max-w-2xl px-4">
+                    Где каждое сообщение — это новая роль, а каждый диалог — новая сцена
+                </p>
+
+                <!-- Преимущества -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-16 w-full max-w-4xl px-4">
+                    <div class="card-hover p-4 md:p-6 rounded-lg">
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Полная Анонимность</h3>
+                        <p class="text-sm md:text-base text-white">Ваша личность надежно скрыта за театральной маской. Никаких следов, только свобода самовыражения.</p>
+                    </div>
+
+                    <div class="card-hover p-4 md:p-6 rounded-lg">
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Безопасность</h3>
+                        <p class="text-sm md:text-base text-white">Шифрование на уровне театрального занавеса. Ваши сообщения видны только избранной аудитории.</p>
+                    </div>
+
+                    <div class="card-hover p-4 md:p-6 rounded-lg">
+                        <h3 class="text-lg md:text-xl font-bold mb-3 md:mb-4 text-white">Свобода Общения</h3>
+                        <p class="text-sm md:text-base text-white">Говорите открыто, делитесь мыслями. Здесь каждый может быть собой, оставаясь инкогнито.</p>
+                    </div>
+                </div>
+
+                <!-- Кнопка присоединиться -->
+                <a href="#" class="telegram-button text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full flex items-center space-x-2 shadow-lg">
+                    <span>Присоединиться к представлению</span>
+                    <svg class="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Декоративные элементы -->
+        <div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-50">
+            <div class="absolute top-1/4 left-1/4 w-2 h-2 bg-gray-500 rounded-full"></div>
+            <div class="absolute top-3/4 right-1/4 w-2 h-2 bg-gray-500 rounded-full"></div>
+            <div class="absolute top-1/2 left-3/4 w-2 h-2 bg-gray-500 rounded-full"></div>
+        </div>
+    </div>
+</body>
+</html>
